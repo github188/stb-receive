@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<!--<property> -->
+	<!--<name>fs.hdfs.impl.disable.cache</name> -->
+	<!--<value>true</value> -->
+	<!--</property> -->
+	<!--<property> -->
+	<!--<name>hadoop.tmp.dir</name> -->
+	<!--<value>/data/bigData/hadoopTemp/hadoop-${user.name}</value> -->
+	<!--<description>A base for other temporary directories.</description> -->
+	<!--</property> -->
+	<!--<property> -->
+	<!--<name>fs.default.name</name> -->
+	<!--<value>hdfs://VM-88-129-ubuntu:8020/</value> -->
+	<!--</property> -->
+	<!--<property> -->
+	<!--<name>fs.trash.interval</name> -->
+	<!--<value>1440</value> -->
+	<!--<description>Number of minutes between trash checkpoints. -->
+	<!--If zero, the trash feature is disabled. -->
+	<!--</description> -->
+	<!--</property> -->
+	<property>
+		<name>fs.hdfs.impl.disable.cache</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>/data/hadoop/app/hadoop/tmp/hadoop-${user.name}</value>
+		<description>A base for other temporary directories.</description>
+	</property>
+	<property>
+		<name>fs.default.name</name>
+		<value>hdfs://icntv</value>
+	</property>
+	<property>
+		<name>fs.trash.interval</name>
+		<value>1440</value>
+		<description>Number of minutes between trash checkpoints.
+			If zero, the trash feature is disabled.
+		</description>
+	</property>
+	<property>
+		<name>fs.hdfs.impl</name>
+		<value>org.apache.hadoop.hdfs.DistributedFileSystem</value>
+		<description>The FileSystem for hdfs: uris.</description>
+	</property>
+
+</configuration>

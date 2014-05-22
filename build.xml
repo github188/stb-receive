@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="StbReceive" default="jar" basedir=".">
+	<property name ="version" value="0.0.1"></property>
+	<property name="destJar" value="scribe-${version}.jar"/> 
+	<!--<property name="main-class" value="tv.icntv.scribe.source.IcntvScribeServer"></property>-->
+	<property name="main-class" value="tv.icntv.lzo.ClientThread"></property>
+	<target name="clean">
+		<delete dir="build" />
+	</target>
+	<path id="classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<target name="compile" depends="clean">
+		<mkdir dir="build/classes" />
+		<javac srcdir="src" destdir="build/classes" encoding="UTF-8">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+	
+	<target name="copyConfig" depends="compile">
+		<copy todir="build/classes">
+			<fileset dir="src">
+				<include name="*.xml" />
+				<include name="*.properties"></include>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="jar" depends="copyConfig">
+		<pathconvert property="mf.classpath" pathsep=" ">
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="*" to="lib/*" />
+				</chainedmapper>
+			</mapper>
+			<path refid="classpath" />
+		</pathconvert>
+
+
+		<jar destfile="${destJar}" basedir="build/classes">
+			<manifest>
+				<attribute name="Main-class" value="${main-class}" />
+				<attribute name="Class-Path" value="${mf.classpath} " />
+			</manifest>
+		</jar>
+	</target>
+</project>
