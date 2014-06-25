@@ -19,16 +19,13 @@ import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hdfs.DistributedFileSystem;
-import org.apache.hadoop.hdfs.HAUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tv.icntv.common.PropertiesUtils;
-
 import java.io.File;
 import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.Properties;
+
 
 /**
  * Created by leixw
@@ -38,34 +35,19 @@ import java.util.Properties;
  * Time: 13:51
  */
 public class HdfsDispatcher implements Dispather {
-//	private Properties pro=PropertiesUtils.getProperties();
+
     Configuration configuration = new Configuration();
     DistributedFileSystem fileSystem = null;
     private Logger logger = LoggerFactory.getLogger(getClass());
     private static final String WRITING = ".writing", WRITED = ".writed";
 
-    private String activeMaster(){
-    	try {
-			return HAUtil.getAddressOfActive(FileSystem.get(configuration)).getHostName();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return "error";
-    }
+   
     private String source;
     private String url;
 
     public HdfsDispatcher(String source, String url) {
         this.source = source;
-//        try {
-//        	String active=ActiveName.activeMasterNameNode(pro.getProperty("icntv.stb.nn.url"), pro.getProperty("icntv.stb.hdfs.nns","10.232.44.165,10.232.48.154").split(","));
-//        	logger.info("active ="+active +"\r\n default url="+url);
-			this.url = url;//MessageFormat.format(url,active);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
         logger.info("source {} \r\n url {}" , source,getUrl());
     }
 
@@ -132,9 +114,5 @@ public class HdfsDispatcher implements Dispather {
         }
         return true;  //To change body of implemented methods use File | Settings | File Templates.
     }
-    public static void main(String[] args) {
-//    	for (String prop : args) {
-            System.out.println( "=" + System.getProperty("java.library.path", ""));
-//          }
-	}
+   
 }

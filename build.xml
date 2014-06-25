@@ -2,8 +2,8 @@
 <project name="StbReceive" default="jar" basedir=".">
 	<property name ="version" value="0.0.1"></property>
 	<property name="destJar" value="scribe-${version}.jar"/> 
-	<!--<property name="main-class" value="tv.icntv.scribe.source.IcntvScribeServer"></property>-->
-	<property name="main-class" value="tv.icntv.lzo.ClientThread"></property>
+	<property name="main-class" value="tv.icntv.scribe.source.IcntvScribeServer"></property>
+	<!--<property name="main-class" value="tv.icntv.lzo.ClientThread"></property> -->
 	<target name="clean">
 		<delete dir="build" />
 	</target>
