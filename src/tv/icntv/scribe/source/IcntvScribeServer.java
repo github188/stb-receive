@@ -96,7 +96,7 @@ public class IcntvScribeServer {
 					}
 				});
             	String message=Joiner.on(splitter).join(msgs);
-            	fileUtils.write(message);
+            	fileUtils.write(message+splitter);
 
                 return ResultCode.OK;
             }
