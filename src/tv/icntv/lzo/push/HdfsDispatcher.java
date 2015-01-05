@@ -47,7 +47,7 @@ public class HdfsDispatcher implements Dispather {
 
     public HdfsDispatcher(String source, String url) {
         this.source = source;
-
+        this.url = url;
         logger.info("source {} \r\n url {}" , source,getUrl());
     }
 
